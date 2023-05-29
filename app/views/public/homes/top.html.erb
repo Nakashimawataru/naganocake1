@@ -1,0 +1,30 @@
+<h2>ようこそ、長野CAKEへ！</br>
+このサイトでは、ケーキ販売のEcサイトになります。</br>
+会員でない方も商品の閲覧はできますが、</br>
+購入の際には会員登録が必要になります。</h2>
+
+
+
+
+<div class="col-md-8 offset-md-1">
+
+      <table class="table">
+        <h3>新着情報</h3>
+        <tbody>
+          <tr>
+            <% @items.each do |item| %>
+              <td>
+                <% if item.profile_image.attached? %>
+                  <%= image_tag item.profile_image, size: "100x100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %></br>
+                <% end %>
+                 <%= item.name %></br>
+                 <%= item.price %>
+             </td>
+            <% end %>
+              <%= link_to "全ての商品を見る>",  items_path %>
+          </tr>
+        </tbody>
+      </table>
+    </div>

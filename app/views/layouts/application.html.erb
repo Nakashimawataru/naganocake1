@@ -6,11 +6,53 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+     <header>
+     <nav class="navbar navber-expand-lg navber-dark bg-dark">
+       <div class="container">
+         <div>
+          <%= link_to "長野ケーキ", root_path %>
+         </div>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% if customer_signed_in? %>
+    <li>
+      <%= link_to "マイページ", customer_path(current_custmer.id) %>
+    </li>
+    <li>
+      <%= link_to "商品一覧", items_path  %>
+    </li>
+     <li>
+      <%= link_to "カート",  cart_items_path  %>
+     </li>
+      <li>
+        <%= link_to "ログアウト",  destroy_customer_session_path, method: :delete  %>
+      </li>
+    <% else %>
+    <li>
+       <%= link_to "About", about_path %>
+    </li>
+    <li>
+       <%= link_to "商品一覧",  items_path %>
+    </li>
+      <li>
+        <%= link_to "新規登録", customer_session_path, method: :create  %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_customer_session_path   %>
+      </li>
+
+    <% end %>
+
+       </div>
+     </nav>
+    <main class="mb-auto">
+        <%= yield %>
+    </main>
   </body>
 </html>
