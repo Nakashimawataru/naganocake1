@@ -14,8 +14,8 @@
           <tr>
             <% @items.each do |item| %>
               <td>
-                <% if item.profile_image.attached? %>
-                  <%= image_tag item.profile_image, size: "100x100" %>
+                <% if item.image.attached? %>
+                  <%= image_tag item.image, size: "100x100" %>
                 <% else %>
                   <%= image_tag 'no_image', size: "100x100" %></br>
                 <% end %>

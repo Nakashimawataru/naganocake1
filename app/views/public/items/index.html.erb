@@ -1,0 +1,11 @@
+<table>
+<h3>商品一覧(全<%= @items.total_count %>件)</h3>
+<% @items.each do |item| %>
+  <%= link_to  item_path(item.id) do %>
+  <%= image_tag item.get_image, size: "100x100" %>
+  <%= item.name %>
+  <%= item.price %>
+  <% end %>
+<% end %>
+</table>
+<%= paginate @items %>
