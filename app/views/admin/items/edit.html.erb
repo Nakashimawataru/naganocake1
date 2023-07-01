@@ -1,0 +1,25 @@
+<h3>商品編集</h3>
+<table>
+<%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
+<tr>
+   <th><label for="inputImage">商品画像</label></th>
+   <td><%= f.file_field :image, accept: "image/*" %></td>
+</tr>
+<tr>
+    <th><label for="inputName">商品名</label></th>
+   <td><%= f.text_field :name %></td>
+</tr>
+<tr>
+    <th><label for="inputIntroduction">商品説明</label></th>
+   <td><%= f.text_field :introduction %></td>
+</tr>
+<tr>
+   <th><label for="input Price">税抜き価格</label></th>
+   <td><%= f.text_field :price %>円</td>
+</tr>
+
+
+</table>
+<%= f.submit "設定を保存",class:"btn btn-success" %>
+
+<% end %>

@@ -1,0 +1,24 @@
+<h3>商品詳細</h3>
+
+<% if @item.image.attached? %>
+  <%= image_tag @item.image, size: "100x100" %>
+<% else %>
+  <%= image_tag 'no_image', size: "100x100" %>
+  <% end %>
+  <table>
+<thaed>
+
+    <th>商品名</th>
+    <th>商品説明</th>
+    <th>税抜き価格</th>
+
+
+</thaed>
+<tbody>
+  <td><%= @item.name %></td>
+  <td><%= @item.introduction %></td>
+  <td><%= @item.price %></td>
+
+</tbody>
+</table>
+<%= link_to "編集する", edit_admin_item_path, class:"btn btn-success" %>

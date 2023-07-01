@@ -3,7 +3,9 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  def after_sign_up_path_for(resource)
+     customers_show_path
+  end
   # GET /resource/sign_up
   # def new
   #   super
@@ -11,7 +13,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   # def create
-  #   super
+    # super
   # end
 
   # GET /resource/edit
@@ -20,9 +22,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+     super
+  end
 
   # DELETE /resource
   # def destroy
@@ -42,7 +44,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

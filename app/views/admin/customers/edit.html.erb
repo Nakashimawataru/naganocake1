@@ -1,0 +1,40 @@
+<h3><%= @customer.first_name %><%= @customer.last_name %>の会員情報編集</h3>
+
+
+<%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
+
+<div class="field">
+   <label for="inputFirst_name,Last_name">会員名</label>
+   <%= f.text_field :first_name %>
+   <%= f.text_field :last_name %>
+</div>
+<div class="field">
+   <label for="inputFirst_name_kana,Last_name_kana">フリガナ</label></label>
+   <%= f.text_field :first_name_kana %>
+   <%= f.text_field :last_name_kana %>
+</div>
+<div class="field">
+   <label for="input Postal_code">郵便番号</label>
+   <%= f.text_field :postal_code %>
+</div>
+<div class="field">
+   <label for="input Postal_code">住所</label>
+   <%= f.text_field :address %>
+</div>
+<div class="field">
+   <label for="input Postal_code">電話番号</label>
+   <%= f.text_field :ptelephone_number %>
+</div>
+<div class="field">
+   <label for="input Postal_code">メールアドレス</label>
+   <%= f.text_field :email %>
+</div>
+<%= f.radio_button :is_deleted, true %>
+<%= f.label :有効 %>
+
+<%= f.radio_button :is_deleted, false %>
+<%= f.label :無効 %>
+
+<%= f.submit "設定を保存", class:"btn btn-success" %>
+
+<% end %>

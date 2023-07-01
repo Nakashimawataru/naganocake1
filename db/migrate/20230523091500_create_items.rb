@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.text :introduction, null: false
       t.integer :price, null: false
       t.timestamps
+      t.boolean :is_active
     end
   end
 end
